@@ -21,3 +21,5 @@ class LoginPage:
     def click_login_button(self):
         login_button = self.browser.find_element(*self.BUTTON_LOGIN)
         login_button.click()
+
+
