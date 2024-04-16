@@ -7,11 +7,9 @@ class MakeAnAppointmentPage:
     HOSPITAL_READMISSION_CHECKBOX = (By.ID, 'chk_hospotal_readmission')
     RADIO_INLINE_LIST = (By.NAME, 'programs')
     VISIT_DATE_BUTTON = (By.CLASS_NAME, 'input-group-addon')
-    DATE_PICKER_NEXT_BTN = (By.XPATH, '/html/body/div/div[1]/table/thead/tr[2]/th[3]')
-    DATEPICKER_DATE_BTN = (By.CLASS_NAME, '<td class="day">22</td>')
     COMMENT_BOX = (By.ID, 'txt_comment')
     BOOK_APPOINTMENT_BUTTON = (By.ID, 'btn-book-appointment')
-    TITLE_HEADER = (By.TAG_NAME, 'h2')
+    TITLE_HEADER = (By.XPATH, '//*[@id="appointment"]/div/div/div/h2')
 
     # Initializer
 
@@ -21,7 +19,7 @@ class MakeAnAppointmentPage:
     # Interaction Methods
     def get_header_name(self):
         header = (self.browser.find_element(*self.TITLE_HEADER))
-        value = header.get_attribute("value")
+        value = header.get_attribute("textContent")
         return value
 
     def choose_facility(self, text):
@@ -43,7 +41,8 @@ class MakeAnAppointmentPage:
     def visit_day_by_date_picker(self):
         date_picker_button = (self.browser.find_element(*self.VISIT_DATE_BUTTON))
         date_picker_button.click()
-        time.sleep(3)
+
+
 
 
 

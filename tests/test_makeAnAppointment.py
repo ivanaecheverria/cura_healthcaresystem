@@ -15,7 +15,6 @@ def test_make_an_appointment(browser):
     PASSWORD = 'ThisIsNotAPassword'
     FACILITY = ['Tokyo CURA Healthcare Center','Hongkong CURA Healthcare Center', 'Seoul CURA Healthcare Center']
     HEALTHCARE_PROGRAM = ['Medicare','Medicaid','None']
-    EXPECTED_HEADER: str = "Make Appointment"
 
 
     #Given the Cura Main page is displayed
@@ -35,11 +34,12 @@ def test_make_an_appointment(browser):
     #And the user clicks Login button
 
     login_page.click_login_button()
-    browser.implicitly_wait(20)
+    browser.implicitly_wait(10)
 
     #Then the Make an appointment page is displayed
-    ACTUAL_HEADER = make_an_appointment_page.get_header_name()
-    assert  str(ACTUAL_HEADER) == str(EXPECTED_HEADER)
+    actual_header = make_an_appointment_page.get_header_name()
+
+    assert "Make Appointment" == actual_header
 
     #Then the user chooses a Facility from the dropdown menu
 
@@ -52,7 +52,6 @@ def test_make_an_appointment(browser):
     #And the user chooses Medicaid from the Healthcare Program inline radio
 
     make_an_appointment_page.choose_healthcare_program(HEALTHCARE_PROGRAM[2])
-    time.sleep(10)
 
     #And the user clicks on the calendar icon
 
